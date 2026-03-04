@@ -49,7 +49,6 @@ use winit::{
         WindowId,
     },
 };
-use winit::window::WindowAttributes;
 use crate::{
     accessibility::AccessibilityTask,
     config::{
@@ -104,7 +103,6 @@ pub struct AppWindow {
 
     pub(crate) on_close: Option<OnCloseHook>,
 
-    pub(crate) attributes: WindowAttributes,
     pub(crate) window_config: WindowConfig,
 }
 
@@ -321,7 +319,6 @@ impl AppWindow {
 
             on_close,
 
-            attributes: window_attributes,
             window_config,
         }
     }
