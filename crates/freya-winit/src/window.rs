@@ -258,7 +258,7 @@ impl AppWindow {
             Adapter::with_event_loop_proxy(active_event_loop, &window, event_loop_proxy.clone());
 
         window.set_visible(true);
-        window.set_ime_allowed(true);
+        window.set_ime_allowed(false);
 
         struct TreeHandle(EventLoopProxy<NativeEvent>, WindowId);
 
@@ -320,7 +320,7 @@ impl AppWindow {
             dropped_file_paths: Vec::new(),
 
             on_close,
-            
+
             attributes: window_attributes,
             window_config,
         }
