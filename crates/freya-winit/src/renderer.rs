@@ -59,6 +59,7 @@ use crate::{
         CloseDecision,
         WindowConfig,
     },
+    drivers::GraphicsDriver,
     plugins::{
         PluginEvent,
         PluginHandle,
@@ -72,7 +73,6 @@ use crate::{
         map_winit_touch_phase,
     },
 };
-use crate::drivers::GraphicsDriver;
 
 pub struct WinitRenderer {
     pub windows_configs: Vec<WindowConfig>,
