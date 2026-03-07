@@ -258,7 +258,7 @@ impl AppWindow {
             Adapter::with_event_loop_proxy(active_event_loop, &window, event_loop_proxy.clone());
 
         window.set_visible(true);
-        window.set_ime_allowed(false);
+        window.set_ime_allowed(!cfg!(target_os = "android"));
 
         struct TreeHandle(EventLoopProxy<NativeEvent>, WindowId);
 
