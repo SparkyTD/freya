@@ -154,6 +154,24 @@ impl Component for WidgetsDemo {
                     .child(
                         rect()
                             .width(Size::fill())
+                            .spacing(8.)
+                            .child("Context Menu")
+                            .child(
+                                Button::new()
+                                    .on_press(|e| {
+                                        if ContextMenu::is_open() {
+                                            log::warn!("Closing ContextMenu");
+                                            ContextMenu::close();
+                                        } else {
+                                            ContextMenu::open_from_event(&e, context_menu())
+                                        }
+                                    })
+                                    .child("Show")
+                            )
+                    )
+                    .child(
+                        rect()
+                            .width(Size::fill())
                             .spacing(4.)
                             .child("Features")
                             .children([Feature::WiFi, Feature::Bluetooth, Feature::Location].map(
@@ -285,4 +303,25 @@ fn ripple_card(
             .color(fg)
             .child(text),
     )
+}
+
+fn context_menu() -> Menu {
+    Menu::new()
+        .child(
+            SubMenu::new()
+                .child(MenuButton::new().child("Option 1"))
+                .child(MenuButton::new().child("Option 2"))
+                .label("Options"),
+        )
+        .child(MenuButton::new().child("Empty"))
+        .child(
+            SubMenu::new()
+                .child(MenuButton::new().child("Option 3"))
+                .label("Other Options"),
+        )
+        .child(
+            MenuButton::new()
+                .child("Close")
+                .on_press(move |_| ContextMenu::close()),
+        )
 }
